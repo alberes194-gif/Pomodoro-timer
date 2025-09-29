@@ -66,15 +66,14 @@ function startTimer(timerDisplay){
     if(myInterval) {
         clearInterval(myInterval);
     }
-    timerDuration = timerDisplay
-    .getAttribute("data-duration")
-    .split(":")[0]
+    timerDuration = timerDisplay.getAttribute("data-duration").split(":")[0]
 
-    let durationInMilliseconds = timerDuration * 60 * 1000;
-    let endTimerstamp = Date.now() + durationInMilliseconds;
+    let durationInMilliseconds = timerDuration * 60 * 1000
+    let endTimestamp = Date.now() + durationInMilliseconds;
 
-    myInterval = setInterval(function() {
-        const timeRemaining = new Date (EndTimestamp - Date.now())
+    myInterval = setInterval(() => {
+        const timeRemaining = new Date (endTimestamp - Date.now())
+
         if(timeRemaining <= 0) {
             clearInterval(myInterval)
             timerDisplay.textContent = "00:00"
@@ -88,7 +87,7 @@ function startTimer(timerDisplay){
         .toString().padStart(2, "0")}`
         timerDisplay.textContent = formattedTime
     }
- }, 1000)
+ }, 1000);
 }
 
 startBtn.addEventListener("click", () => {
@@ -100,7 +99,7 @@ startBtn.addEventListener("click", () => {
     }
 })
 
-stopBtn.addEventListener("Click", () => {
+stopBtn.addEventListener("click", () => {
     if(currentTimer) {
         clearInterval(myInterval)
     }
